@@ -11,31 +11,30 @@ import "./App.css"
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true); // ✅ loading state
+  const [loading, setLoading] = useState(true); 
 
-  // ✅ Check login from localStorage on first load
   useEffect(() => {
     const loggedIn = localStorage.getItem("isLoggedIn");
     if (loggedIn === "true") {
       setIsLoggedIn(true);
     }
-    setLoading(false); // ✅ check complete
+    setLoading(false); 
   }, []);
 
-  // ✅ Function to handle login
+  
   const handleLogin = () => {
     setIsLoggedIn(true);
     localStorage.setItem("isLoggedIn", "true");
   };
 
-  // ✅ Function to handle logout
+  
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("isLoggedIn");
   };
 
   if (loading) {
-    // ✅ jab tak localStorage check ho raha hai
+    
     return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
   }
 
